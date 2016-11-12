@@ -1,42 +1,39 @@
 program Num_Int
     IMPLICIT NONE
     INTEGER :: i,j,N
-    REAL :: Arear, Areat, Aream, Areas, a, b, h
-    
-    !OPEN(UNIT=1,FILE="Num_Int.txt",ACTION="WRITE")
-    print*,"Enter the value of N:"
-    read*, N
-    print*,"Enter the value for upper bound:"
-    read*, b
-    print*,"Enter the value for lower bound:"
-    read*, a
-    !do i = 1,5 
+    REAL :: Arear, Areat, Aream, Areas, a=0, b=1, h, integral
+    REAL :: errorr, errort, errorm, errors
+    OPEN(UNIT=1,FILE="Equation2.txt",ACTION="WRITE")
+    N = 1
+    integral = ((b**5)/5-(b**4)/4) - ((a**5)/5-(a**4)/4)
+    print*,integral
+    WRITE(1,*) "f(x) = x^4-x^3"
+    do i = 1,5 
       h = (b-a)/N
       print*, "N =",N
-      !WRITE(1,*) "N =",N,"                |"
+      WRITE(1,*) "N =",N
       Arear = 0
       Areat = 0
       Aream = 0
       Areas = 0
       do j = 0, N
         CALL rectangular(N,j,h,a,Arear)
-        !WRITE(1,*) "Rectangular = ", Area,"|"
         CALL trapezoidal(N,j,h,a,Areat)
-        !WRITE(1,*) "Trapezoidal = ", Area,"|"
         CALL mid_point(N,j,h,a,Aream)
-        !WRITE(1,*) "Mid Point   = ", Area,"|"
         CALL simpson(N,j,h,a,Areas)
-        !WRITE(1,*) "Simpson     = ", Area,"|"
       end do
-      print*, "Area total  = ",Arear
-      print*, "Area total  = ",Areat
-      print*, "Area total  = ",Aream
-      print*, "Area total  = ",Areas
-      print*, "--------------------------"
-      !N = N*2
-      !WRITE(1,*) "---------------------------"
-    !end do
-    !CLOSE(UNIT=1)
+      errorr = abs(integral-arear)
+      errort = abs(integral-areat)
+      errorm = abs(integral-aream)
+      errors = abs(integral-areas)
+      WRITE(1,*) "Rectangular = ", Arear,"Error =", errorr
+      WRITE(1,*) "Trapezoidal = ", Areat,"Error =", errort
+      WRITE(1,*) "Mid Point   = ", Aream,"Error =", errorm
+      WRITE(1,*) "Simpson     = ", Areas,"Error =", errors
+      N = N*2
+      WRITE(1,*) "----------------------------------------------------"
+    end do
+    CLOSE(UNIT=1)
 CONTAINS
     SUBROUTINE rectangular(N,j,h,a,Arear)
         IMPLICIT NONE
@@ -45,7 +42,7 @@ CONTAINS
         REAL,DIMENSION(0:N) :: x,r
         x(j) = a+j*h
         if(j/=N) then
-          r(j) = 3+2*x(j)+5*x(j)*x(j)
+          r(j) = x(j)**4-x(j)**3
           !print*, "r(",j,") = ",r(j)
           Arear = Arear + h*r(j)
           !print*,"Area (",j,") = ",Arearect
@@ -59,7 +56,7 @@ CONTAINS
         REAL,INTENT(INOUT) :: Areat,h,a
         REAL,DIMENSION(0:N) :: x,r
         x(j) = a+j*h
-        r(j) = 3+2*x(j)+5*x(j)*x(j)
+        r(j) = x(j)**4-x(j)**3
         !print*, "r(",j,") = ",r(j)
         if(j==0 .OR. j==N) then
             Areat = Areat + h*(r(j)/2)
@@ -75,11 +72,12 @@ CONTAINS
         IMPLICIT NONE
         INTEGER,INTENT(IN) :: N,j
         REAL,INTENT(INOUT) :: Aream,h,a
-        REAL,DIMENSION(0:N) :: x
-        x(j) = (a+h)/2 + h*j
+        REAL,DIMENSION(0:N) :: x,x1
+        x(j) = a+j*h
+        x1(j) = x(j)+h
         !print*,x(j)
         if(j<N) then
-          Aream = Aream + h*(3+2*x(j)+5*x(j)*x(j))  
+          Aream = Aream + h*(((x(j)+x1(j))/2)**4-((x(j)+x1(j))/2)**3)  
           !print*, "r(",j,") = ",r(j)
         end if
         !print*,"Area (",j,") = ",Area
@@ -99,7 +97,7 @@ CONTAINS
         x1(j) = x(j)+h
         x2(j) = x1(j)+h
         if(MOD(j,2)==0 .AND. j<N) then
-          Areas = Areas + (h/3)*((3+2*x(j)+5*(x(j)**2))+4*((3+2*x1(j)+5*(x1(j)**2)))+(3+2*x2(j)+5*(x2(j)**2)))
+          Areas = Areas + (h/3)*(x(j)**4-x(j)**3+4*(x1(j)**4-x1(j)**3)+x2(j)**4-x2(j)**3)
         end if
         !print*,"Area (",j,") = ",Area
         !print*, "Area total = ",Areas
