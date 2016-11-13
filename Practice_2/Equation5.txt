@@ -1,4 +1,4 @@
- f(x) = 1/x
+ f(x) = 1/x   1.25276303    
  N =           1
  Rectangular =    2.50000000     Error =   1.24723697    
  Trapezoidal =    1.60714293     Error =  0.354379892    

@@ -1,4 +1,4 @@
- f(x) = x^4-x^3
+ f(x) = x^4-x^3  -4.99999970E-02
  N =           1
  Rectangular =    0.00000000     Error =   4.99999970E-02
  Trapezoidal =    0.00000000     Error =   4.99999970E-02

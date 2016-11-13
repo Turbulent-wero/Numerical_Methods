@@ -4,13 +4,21 @@ program Num_Int
     REAL :: Arear, Areat, Aream, Areas, a=0, b=1, h, integral
     REAL :: errorr, errort, errorm, errors
     OPEN(UNIT=1,FILE="Equation1.txt",ACTION="WRITE")
+    OPEN(UNIT=2,FILE="Rectangular.txt",ACTION="WRITE")
+    OPEN(UNIT=3,FILE="Trapezoidal.txt",ACTION="WRITE")
+    OPEN(UNIT=4,FILE="Midpoint.txt",ACTION="WRITE")
+    OPEN(UNIT=7,FILE="Simpson.txt",ACTION="WRITE")
+    OPEN(UNIT=8,FILE="ErrorRectangular.txt",ACTION="WRITE")
+    OPEN(UNIT=9,FILE="ErrorTrapezoidal.txt",ACTION="WRITE")
+    OPEN(UNIT=10,FILE="ErrorMidpoint.txt",ACTION="WRITE")
+    OPEN(UNIT=11,FILE="ErrorSimpson.txt",ACTION="WRITE")
     N = 1
     integral = (3*b+b**2+(5*b**3)/3) - (3*a+a**2+(5*a**3)/3)
-    print*,integral
-    WRITE(1,*) "f(x) = 3+2x+5x²"
+    WRITE(*,*)integral
+    WRITE(1,*) "f(x) = 3+2x+5x²", integral
     do i = 1,5 
       h = (b-a)/N
-      print*, "N =",N
+      WRITE(*,*) "N =",N
       WRITE(1,*) "N =",N
       Arear = 0
       Areat = 0
@@ -30,6 +38,10 @@ program Num_Int
       WRITE(1,*) "Trapezoidal = ", Areat,"Error =", errort
       WRITE(1,*) "Mid Point   = ", Aream,"Error =", errorm
       WRITE(1,*) "Simpson     = ", Areas,"Error =", errors
+      WRITE(8,*)N,errorr
+      WRITE(9,*)N,errort
+      WRITE(10,*)N,errorm
+      WRITE(11,*)N,errors
       N = N*2
       WRITE(1,*) "----------------------------------------------------"
     end do
@@ -48,6 +60,9 @@ CONTAINS
           !print*,"Area (",j,") = ",Arearect
         end if
         !print*,"-------------------------------------------"
+        if(N==16) then
+          WRITE(2,*)x(j),Arear
+        end if
     END SUBROUTINE rectangular
 
     SUBROUTINE trapezoidal(N,j,h,a,Areat)
@@ -66,6 +81,9 @@ CONTAINS
         !print*, "Area total = ",Areat
         !print*,"-------------------------------------------"            
         end if
+        if(N==16) then
+          WRITE(3,*)x(j),Areat
+        end if
     END SUBROUTINE trapezoidal
 
     SUBROUTINE mid_point(N,j,h,a,Aream)
@@ -83,6 +101,9 @@ CONTAINS
         !print*,"Area (",j,") = ",Area
         !print*, "Area total = ",Aream
         !print*,"-------------------------------------------"
+        if(N==16) then
+          WRITE(4,*)x(j),Aream
+        end if
     END SUBROUTINE mid_point
 
     SUBROUTINE simpson(N,j,h,a,Areas)
@@ -102,5 +123,8 @@ CONTAINS
         !print*,"Area (",j,") = ",Area
         !print*, "Area total = ",Areas
         !print*,"-------------------------------------------"
+        if(N==16) then
+          WRITE(7,*)x(j),Areas
+        end if
     END SUBROUTINE simpson
 END PROGRAM Num_Int

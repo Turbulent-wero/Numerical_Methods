@@ -1,4 +1,4 @@
- f(x) = e^-x^2
+ f(x) = e^-x^2  0.746824145    
  N =           1
  Rectangular =    1.00000000     Error =  0.253175855    
  Trapezoidal =   0.683939695     Error =   6.28844500E-02

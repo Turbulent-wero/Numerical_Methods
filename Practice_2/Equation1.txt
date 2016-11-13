@@ -1,31 +1,31 @@
- f(x) = 3+2x+5x²
+ f(x) = 1/x   1.25276303    
  N =           1
- Rectangular =    3.00000000     Error =   2.66666651    
- Trapezoidal =    6.50000000     Error =  0.833333492    
- Mid Point   =    5.25000000     Error =  0.416666508    
- Simpson     =    0.00000000     Error =   5.66666651    
+ Rectangular =    2.50000000     Error =   1.24723697    
+ Trapezoidal =    1.60714293     Error =  0.354379892    
+ Mid Point   =    1.11111116     Error =  0.141651869    
+ Simpson     =    0.00000000     Error =   1.25276303    
  ----------------------------------------------------
  N =           2
- Rectangular =    4.12500000     Error =   1.54166651    
- Trapezoidal =    5.87500000     Error =  0.208333492    
- Mid Point   =    5.56250000     Error =  0.104166508    
- Simpson     =    5.66666698     Error =   4.76837158E-07
+ Rectangular =    1.80555558     Error =  0.552792549    
+ Trapezoidal =    1.35912704     Error =  0.106364012    
+ Mid Point   =    1.20401335     Error =   4.87496853E-02
+ Simpson     =    1.27645504     Error =   2.36920118E-02
  ----------------------------------------------------
  N =           4
- Rectangular =    4.84375000     Error =  0.822916508    
- Trapezoidal =    5.71875000     Error =   5.20834923E-02
- Mid Point   =    5.64062500     Error =   2.60415077E-02
- Simpson     =    5.66666698     Error =   4.76837158E-07
+ Rectangular =    1.50478458     Error =  0.252021551    
+ Trapezoidal =    1.28157032     Error =   2.88072824E-02
+ Mid Point   =    1.23875201     Error =   1.40110254E-02
+ Simpson     =    1.25571787     Error =   2.95484066E-03
  ----------------------------------------------------
  N =           8
- Rectangular =    5.24218750     Error =  0.424479008    
- Trapezoidal =    5.67968750     Error =   1.30209923E-02
- Mid Point   =    5.66015625     Error =   6.51025772E-03
- Simpson     =    5.66666698     Error =   4.76837158E-07
+ Rectangular =    1.37176836     Error =  0.119005322    
+ Trapezoidal =    1.26016104     Error =   7.39800930E-03
+ Mid Point   =    1.24909186     Error =   3.67116928E-03
+ Simpson     =    1.25302470     Error =   2.61664391E-04
  ----------------------------------------------------
  N =          16
- Rectangular =    5.45117188     Error =  0.215494633    
- Trapezoidal =    5.66992188     Error =   3.25536728E-03
- Mid Point   =    5.66503906     Error =   1.62744522E-03
- Simpson     =    5.66666698     Error =   4.76837158E-07
+ Rectangular =    1.31043005     Error =   5.76670170E-02
+ Trapezoidal =    1.25462651     Error =   1.86347961E-03
+ Mid Point   =    1.25183308     Error =   9.29951668E-04
+ Simpson     =    1.25278163     Error =   1.85966492E-05
  ----------------------------------------------------

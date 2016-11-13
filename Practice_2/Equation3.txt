@@ -1,4 +1,4 @@
- f(x) = 2+sin(2x^.5)
+ f(x) = 2+sin(2x^.5)   8.18347836    
  N =           1
  Rectangular =    14.5464878     Error =   6.36300945    
  Trapezoidal =    9.81663799     Error =   1.63315964    
