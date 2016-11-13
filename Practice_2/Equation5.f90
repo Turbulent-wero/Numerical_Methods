@@ -1,13 +1,13 @@
 program Num_Int
     IMPLICIT NONE
     INTEGER :: i,j,N
-    REAL :: Arear, Areat, Aream, Areas, a=1, b=6, h, integral
+    REAL :: Arear, Areat, Aream, Areas, a=2, b=7, h, integral
     REAL :: errorr, errort, errorm, errors
-    OPEN(UNIT=1,FILE="Equation4.txt",ACTION="WRITE")
+    OPEN(UNIT=1,FILE="Equation5.txt",ACTION="WRITE")
     N = 1
-    integral = (2*b-(b**.5*(cos(2*b**.5)))+((sin(2*b**.5))/2)) - (2*a-(a**.5*(cos(2*a**.5)))+((sin(2*a**.5))/2))
+    integral = log(b)-log(a)
     print*,integral
-    WRITE(1,*) "f(x) = 2+sin(2x^.5)"
+    WRITE(1,*) "f(x) = 1/x"
     do i = 1,5 
       h = (b-a)/N
       print*, "N =",N
@@ -42,7 +42,7 @@ CONTAINS
         REAL,DIMENSION(0:N) :: x,r
         x(j) = a+j*h
         if(j/=N) then
-          r(j) = 2+sin(2*(x(j)**.5))
+          r(j) = 1/x(j)
           !print*, "r(",j,") = ",r(j)
           Arear = Arear + h*r(j)
           !print*,"Area (",j,") = ",Arearect
@@ -56,7 +56,7 @@ CONTAINS
         REAL,INTENT(INOUT) :: Areat,h,a
         REAL,DIMENSION(0:N) :: x,r
         x(j) = a+j*h
-        r(j) = 2+sin(2*(x(j)**.5))
+        r(j) = 1/x(j)
         !print*, "r(",j,") = ",r(j)
         if(j==0 .OR. j==N) then
             Areat = Areat + h*(r(j)/2)
@@ -77,7 +77,7 @@ CONTAINS
         x1(j) = x(j)+h
         !print*,x(j)
         if(j<N) then
-          Aream = Aream + h*(2+sin(2*((x(j)+x1(j))/2)**.5))  
+          Aream = Aream + h*(1/((x(j)+x1(j))/2))  
           !print*, "r(",j,") = ",r(j)
         end if
         !print*,"Area (",j,") = ",Area
@@ -97,7 +97,7 @@ CONTAINS
         x1(j) = x(j)+h
         x2(j) = x1(j)+h
         if(MOD(j,2)==0 .AND. j<N) then
-          Areas = Areas + (h/3)*(2+sin(2*(x(j)**.5))+4*(2+sin(2*(x1(j)**.5)))+2+sin(2*(x2(j)**.5)))
+          Areas = Areas + (h/3)*(1/x(j)+4*(1/x1(j))+1/x2(j))
         end if
         !print*,"Area (",j,") = ",Area
         !print*, "Area total = ",Areas

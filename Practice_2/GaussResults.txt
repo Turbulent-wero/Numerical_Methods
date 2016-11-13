@@ -1,0 +1,13 @@
+ f(x) = 2+sin(2x^.5)
+ N =           2 Integral =              NaN Error =              NaN
+ -----------------------------------
+ N =           3 Integral =              NaN Error =              NaN
+ -----------------------------------
+ N =           4 Integral =              NaN Error =              NaN
+ -----------------------------------
+ N =           5 Integral =              NaN Error =              NaN
+ -----------------------------------
+ N =           6 Integral =              NaN Error =              NaN
+ -----------------------------------
+ N =           7 Integral =              NaN Error =              NaN
+ -----------------------------------
