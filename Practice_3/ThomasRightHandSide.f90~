@@ -14,7 +14,7 @@ CONTAINS
         a(i)=-1
         b(i)=4
         c(i)=-1
-        x(i)=i!cos(3.14159265/i)
+        x(i)=cos(3.14159265/i)
         write(*,*) x(i)
       end do
         d(1)=b(1)*x(1)+c(1)*x(1+1)
