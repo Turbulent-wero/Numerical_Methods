@@ -48,11 +48,11 @@ CONTAINS
       end do
       U(N) = d(N)/b(N)
       do j=N-1,1,-1
-        U(j) = (d(j)-c(j)*x(j+1))/b(j)
+        U(j) = (d(j)-c(j)*U(j+1))/b(j)
       end do
-!      do j=1,N
-!        write(*,*) "x(",j,") = ",x(j)
-!      end do
+!do j=1,N
+! write(1,*) "x(",j,") = ",x(j),U(j),Uex(j)
+!end do
     END SUBROUTINE Thomas
     SUBROUTINE error(j,M,U,Uex,dx)
       INTEGER,INTENT(INOUT) :: j
@@ -64,6 +64,6 @@ CONTAINS
 	e = e + (abs(Uex(j)-U(j)))**2
       end do
       e = (e*dx)**.5
-      write(1,*) dx,e
+      write(1,*) dx/pi,e
     END SUBROUTINE error
 END PROGRAM Dirichlet
