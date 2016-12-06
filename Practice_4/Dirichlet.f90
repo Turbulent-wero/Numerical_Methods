@@ -50,8 +50,8 @@ CONTAINS
       do j=N-1,1,-1
         U(j) = (d(j)-c(j)*U(j+1))/b(j)
       end do
-!do j=1,N
-! write(1,*) "x(",j,") = ",x(j),U(j),Uex(j)
+!do j=0,N
+! write(1,*) "x(",j,") = ",a(j),b(j),c(j),d(j)!x(j),U(j),Uex(j)
 !end do
     END SUBROUTINE Thomas
     SUBROUTINE error(j,M,U,Uex,dx)
