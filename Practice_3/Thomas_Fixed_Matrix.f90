@@ -1,4 +1,4 @@
-PROGRAM Thomas
+PROGRAM Thomas_Fixed_Matrix
   IMPLICIT NONE
   INTEGER :: i,N=4
   REAL*8,DIMENSION(0:1000) :: x,a,b,c,d,Xex
@@ -34,10 +34,10 @@ PROGRAM Thomas
     write(*,*)"Type the value of the exact x(",i,")"
     read(*,*) Xex(i)
   end do
-  call algorithm(x,a,b,c,d,N,i)
+  call Thomas(x,a,b,c,d,N,i)
   call error(i,N,x,Xex)
 CONTAINS
-    SUBROUTINE algorithm(x,a,b,c,d,N,i)
+    SUBROUTINE Thomas(x,a,b,c,d,N,i)
       INTEGER,INTENT(INOUT) :: N,i
       REAL*8,DIMENSION(0:1000),INTENT(INOUT) :: x,a,b,c,d
     
@@ -52,7 +52,7 @@ CONTAINS
       do i=1,N
         write(*,*) "x(",i,") = ",x(i)
       end do
-    END SUBROUTINE algorithm
+    END SUBROUTINE Thomas
     SUBROUTINE error(i,N,x,Xex)
       INTEGER,INTENT(INOUT) :: i,N
       REAL*8,DIMENSION(0:1000),INTENT(INOUT) :: x,Xex
@@ -62,4 +62,4 @@ CONTAINS
 	write(*,*)"Error at ",i,"=",e(i)
       end do
     END SUBROUTINE error
-END PROGRAM Thomas
+END PROGRAM Thomas_Fixed_Matrix

@@ -8,17 +8,17 @@ PROGRAM Newmann
   do M=10,10000,10
     if(M==counter) then
     dx = pi/M
-    do j=0,M+1		
+    do j=0,M		
       x(j) = j*dx		!Mesh
       Uex(j) = cos(pi*x(j))	!Exact solution
       f(j) = (-(pi)**2)*(cos(pi*x(j)))
     end do     	
-    do j=0,M+1	 		!Matrix
+    do j=0,M	 		!Matrix
       if(j==0) then
         b(j) = -2
         c(j) = 2
         d(j) = (dx**2)*f(j)
-        else if(j==M+1) then
+        else if(j==M) then
           a(j) = 2
           b(j) = -2*(1+dx)
           d(j) = (dx**2)*f(j)-2*dx
@@ -30,7 +30,7 @@ PROGRAM Newmann
       end if
 !write(1,*) a(j),b(j),c(j),d(j)
     end do
-    N=M+1
+    N=M
     call Thomas(U,a,b,c,d,N,j)	!Call Thomas algorithm subroutine
     call error(j,N,U,Uex,dx)	!Call error subroutine
     counter=counter*10
@@ -60,7 +60,7 @@ CONTAINS
       REAL*8,DIMENSION(0:1000),INTENT(INOUT) :: U,Uex
       REAL*8 :: e
       e=0
-      do j=1,N
+      do j=0,N
 	e = e + (abs(Uex(j+1)-U(j-1)))**2
       end do
       e = (e*dx)**.5
